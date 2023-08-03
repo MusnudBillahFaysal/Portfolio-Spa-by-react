@@ -1,13 +1,483 @@
-body {
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+/*body*/
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+body,
+#root {
+  height: 100vh;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+}
+body,
+input,
+select,
+button,
+textarea {
+  font-family: Montserrat, Helvetica, Arial, sans-serif;
+  font-size: 1.9rem;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'header'
+    'main'
+    'footer';
+  grid-template-rows: 8rem 1fr auto; /* Change the last row to "auto" to let it adjust based on content */
+  grid-template-columns: 1fr;
+  min-height: 100%;
+  background-color: rgb(232, 218, 202);
+}
+
+header {
+  background-color: rgb(232, 218, 202);
+  color: #ce2525;
+  display: flex;
+  position: fixed;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 2rem;
+}
+
+header a {
+  color: black;
+  text-decoration: none;
+  justify-content: space-between;
+  font-size: 5rem;
+}
+
+header nav ul {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+
+header nav ul li {
+  margin-left: 2rem;
+}
+
+header nav ul li:first-child {
+  margin-left: 0;
+}
+
+header nav ul li a {
+  color: #251a1a;
+  text-decoration: none;
+  font-size: 1.8rem;
+  transition: color 0.3s ease;
+}
+
+header nav ul li a:hover {
+  color: #149b3a;
+}
+
+.button.primary {
+  background-color: #f0c040;
+  color: #ffffff;
+  font-size: 1rem;
+  padding: 1rem 2rem;
+  margin-left: 11rem;
+}
+
+.button.primary:hover {
+  background-color: #aa3030;
+}
+main {
+  /* grid-area: main; Remove this line */
+  /* display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  min-height: calc(
+    100vh - 8rem - 5rem
+  ); /* Subtract the header and footer heights from the viewport height 
+  padding-top: 8rem; Add padding-top to create space between the header and main content 
+  padding-bottom: 8rem; Add padding-bottom to create space between the main content and footer */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+  margin-bottom: 5rem; /* Add a margin to create space between main content and footer */
+}
+
+footer {
+  /* grid-area: footer; */
+  /* background-color: #13283d;
+  color: #ffffff;
+  display: flex;
+  justify-content: center; /* Add this line to create space between footer items 
+  align-items: center;
+  padding: 1rem 1.2rem; /* Add some padding to the footer 
+  position: fixed;  Set the footer to fixed position 
+  bottom: 0;  Attach it to the bottom of the viewport 
+  left: 0;
+  right: 0;
+  width: 100%; /* Make the footer fill the entire viewport width 
+  z-index: 100; Add a higher z-index to make sure the footer is on top of other elements */
+
+  background-color: #13283d;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 1.2rem;
+  width: 100%;
+}
+
+footer h1 {
+  font-size: 3rem;
+  padding: 2.5rem 6.3rem;
+  margin-left: 3rem;
+  margin-bottom: 1rem; /* Add margin at the bottom to create space between h1 tags */
+  border-bottom: 1px;
+}
+
+.content {
+  display: flex;
+  flex-wrap: wrap;
+}
+.main {
+  background-color: #ccc;
+  flex: 3 60rem;
+}
+.sidebar {
+  flex: 1 20rem;
+}
+
+/* Font Weights */
+.font-600 {
+  font-weight: 600;
+}
+
+/* Animations */
+@keyframes fadeInOut {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  25%,
+  75% {
+    opacity: 1;
+  }
+}
+
+.word-transition {
+  animation: fadeInOut 4s infinite;
+}
+
+/* Additional styles */
+.flex {
+  display: flex;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+.items-center {
+  align-items: center;
+}
+
+/* Image styles */
+.w-48 {
+  width: 68rem;
+}
+
+.h-auto {
+  height: auto;
+}
+
+.float-right {
+  float: right;
+}
+.body {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
+  margin: 0 auto;
+  background-color: rgb(232, 218, 202);
+  padding: 2rem;
+}
+
+.body h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Custom styles for the layout */
+.intro-container {
+  display: flex;
+  flex-direction: row; /* Change to column to stack the components vertically */
+  justify-content: center; /* Add this line to center the components vertically */
+  align-items: center;
+  margin-top: 8rem;
+  flex: 1;
+}
+/* Contact Now button styles */
+.contact-now-container {
+  position: relative;
+}
+
+.contact-now-btn {
+  background-color: #d78109;
+  color: #ffffff;
+  padding: 1.5rem 2.5rem; /* Decrease padding to make the button smaller */
+  font-size: 1.6rem; /* Decrease font size */
+  font-weight: bold;
+  text-decoration: none;
+  font-family: Arial, sans-serif; /* Use a different font family */
+  position: relative;
+  z-index: 2;
+  margin-right: 8rem; /* Adjust the margin as needed */
+}
+.contact-now-btn:hover {
+  background-color: #120f0f;
+}
+.contact-now-btn::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #120f0f;
+  /* background-color: rgba(1, 1, 14, 0.5); Blue color with transparency */
+  top: 7px; /* Adjust the vertical offset to control the depth of the bottom shadow */
+  right: -6px; /* Adjust the horizontal offset to control the depth of the right shadow */
+  z-index: -1; /* Place the pseudo-element behind the button */
+}
+
+/* Lets-Start-btn button styles */
+.Lets-Start-btn-container {
+  position: relative;
+}
+.Lets-Start-btn {
+  background-color: #d78109;
+  color: #ffffff;
+  padding: 1.5rem 2.5rem; /* Decrease padding to make the button smaller */
+  font-size: 1.6rem; /* Decrease font size */
+  font-weight: bold;
+  text-decoration: none;
+  font-family: Arial, sans-serif; /* Use a different font family */
+  position: relative;
+  z-index: 2;
+  margin-right: 8rem; /* Adjust the margin as needed */
+}
+
+.Lets-Start-btn::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #120f0f;
+  /* background-color: rgba(1, 1, 14, 0.5); Blue color with transparency */
+  top: 6px; /* Adjust the vertical offset to control the depth of the bottom shadow */
+  right: -6px; /* Adjust the horizontal offset to control the depth of the right shadow */
+  z-index: -1; /* Place the pseudo-element behind the button */
+}
+.Lets-Start-btn:hover {
+  background-color: #120f0f;
+}
+.intro-content-img {
+  /* width: 50%;
+  display: flex;
+  justify-content: flex-end; */
+  flex: 1; /* Change to flex: 1 to take half of the available space in the intro-container */
+  display: flex;
+  justify-content: flex-end; /* Align the image to the right */
+  padding-right: 2rem; /* Add some padding to the right to create space between image and text */
+}
+.intro-content-text {
+  /* width: 50%;
+  text-align: left;
+  margin-right: 10rem;
+  padding-left: 7rem; */
+  flex: 1; /* Change to flex: 1 to take half of the available space in the intro-container */
+  text-align: left;
+  padding-left: 2rem; /* Add some padding to the left to create space between image and text */
+  margin-bottom: 5rem;
+}
+.intro-content-text h1 {
+  flex: 1;
+  padding-right: 2rem;
+  font-size: 7rem;
+}
+
+.intro-content-text p {
+  margin-top: 4rem;
+  margin-bottom: 5rem;
+}
+
+/* Styles for the service section */
+/* Styles for the service section */
+.service-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Center the items horizontally */
+  align-items: center; /* Center the items vertically */
+  margin-top: 4rem;
+  margin-bottom: 8rem;
+}
+
+.service-box-web {
+  background-color: #716e80;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 45%; /* Adjust the width as needed */
+  margin: 1rem; /* Add some margin to create space between the service boxes */
+}
+
+.service-box-web:hover {
+  background-color: #120f0f;
+}
+
+.service-box-dev {
+  background-color: #9e4b4b;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 45%; /* Adjust the width as needed */
+  margin: 1rem; /* Add some margin to create space between the service boxes */
+}
+
+.service-box-seo {
+  background-color: #947ad1;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 45%; /* Adjust the width as needed */
+  margin: 1rem; /* Add some margin to create space between the service boxes */
+}
+
+.service-box-webd {
+  background-color: #c5cf16;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 45%; /* Adjust the width as needed */
+  margin: 1rem; /* Add some margin to create space between the service boxes */
+}
+
+.service-box h5 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.service-box p {
+  font-size: 1.6rem;
+  color: #444;
+}
+
+/* Style for the "My Service" heading */
+.my-service-heading {
+  font-size: 6rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* Add this to your existing CSS */
+.active-link {
+  color: #c7370b; /* Change the color to the desired active color */
+  text-decoration: underline; /* Add underline to the active link */
+}
+
+/* CSS for the Skills component */ /* CSS for the Skills component */
+.containers {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.section-heading {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 26px;
+  margin-right: 55rem;
+}
+
+.section-heading h1 span {
+  border-bottom: 2px solid #333;
+  padding-bottom: 5px;
+}
+
+.content {
+  display: flex;
+}
+
+.skills-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px; /* Reduce the gap between rows */
+  height: 12rem; /* Allow the height to adjust based on content */
+}
+
+.skill-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  border-radius: 5px;
+  height: 50px;
+  width: 23rem; /* Increase the width of each skill box */
+}
+
+.skill-box i {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.skill-box h6 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.skill-box.html {
+  background-color: #f5a623;
+}
+
+.skill-box.css {
+  background-color: #6dc6df;
+}
+
+.skill-box.react {
+  background-color: #61dafb;
+}
+
+.skill-box.angular {
+  background-color: #dd0031;
+}
+
+.skill-box.ios {
+  background-color: #999;
+}
+
+.skill-box.app-dev {
+  background-color: #34c759;
+}
+
+.image {
+  margin-left: auto;
+  text-align: center;
+  max-width: 588px;
+}
+
+.image img {
+  max-width: 100%;
+  max-height: 656px;
 }
