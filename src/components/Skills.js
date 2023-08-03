@@ -5,7 +5,7 @@ function Skills() {
     <div className="containers">
       <div className="section-heading">
         <h1>
-          <span>My Skills</span>
+          <span>MY SKILLS</span>
         </h1>
       </div>
 
