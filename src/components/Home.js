@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Contact from './Contact';
 import Services from './Services';
 import Skills from './Skills';
+import Portfolio from './Portfolio';
 
 const Home = () => {
   // State for the word animation
@@ -122,7 +123,7 @@ const Home = () => {
               </h1>
               <div className="Lets-Start-btn-container">
                 <p>Based in Los Angeles, California.</p>
-                <Link to="/contact" className="Lets-Start-btn">
+                <Link className="Lets-Start-btn" ref={contactRef}>
                   LET'S START
                 </Link>
               </div>
@@ -148,6 +149,13 @@ const Home = () => {
         </div>
         <div className="service-container" ref={skillsRef}>
           <Skills />
+        </div>
+
+        <div className="service-container" ref={portfolioRef}>
+          <Portfolio />
+        </div>
+        <div className="service-container" ref={contactRef}>
+          <Contact />
         </div>
       </main>
     </div>

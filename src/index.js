@@ -10,6 +10,7 @@ import Home from './components/Home';
 import Services from './components/Services';
 import Skills from './components/Skills';
 import '@fortawesome/fontawesome-free/css/all.min.css';
+import Portfolio from './components/Portfolio';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -22,6 +23,7 @@ root.render(
         <Route path="/" element={<Services />} />
         <Route path="/" element={<Skills />} />
 
+        <Route path="/" element={<Portfolio />} />
         <Route path="/" element={<Contact />} />
       </Routes>
     </BrowserRouter>
