@@ -37,18 +37,57 @@ const Home = () => {
   const contactRef = useRef(null);
 
   const handleScrollToSection = (ref) => {
-    const sectionTop = ref.current.offsetTop; // Get the top position of the section
-    window.scrollTo({
-      top: sectionTop,
-      behavior: 'smooth', // Use smooth scrolling for a better user experience
-    });
+    if (ref && ref.current) {
+      let sectionTop = ref.current.offsetTop;
+
+      // Add conditions based on the ref to adjust the sectionTop if needed
+      if (ref === servicesRef) {
+        // Add an offset for the 'Services' section (example: 100 pixels)
+        sectionTop += 100;
+      } else if (ref === skillsRef) {
+        // Add an offset for the 'Skills' section (example: 150 pixels)
+        sectionTop += 150;
+      }
+      // Add more conditions for other sections if necessary
+
+      window.scrollTo({
+        top: sectionTop,
+        behavior: 'smooth',
+      });
+    }
   };
 
-  // Function to update the active link state and scroll to the section
   const handleNavLinkClick = (linkName, ref) => {
     setActiveLink(linkName);
     handleScrollToSection(ref);
   };
+  // const handleScrollToSection = (ref) => {
+  //   if (ref && ref.current) {
+  //     const sectionTop = ref.current.offsetTop;
+  //     window.scrollTo({
+  //       top: sectionTop,
+  //       behavior: 'smooth',
+  //     });
+  //   }
+  // };
+
+  // Function to update the active link state and scroll to the section
+  // const handleNavLinkClick = (linkName, ref) => {
+  //   setActiveLink(linkName);
+  //   handleScrollToSection(ref);
+  // };
+  // Function to update the active link state and scroll to the section
+  // const handleNavLinkClick = (linkName, ref) => {
+  //   if (linkName !== 'home') {
+  //     window.scrollTo({
+  //       top: 0, // Scroll to the top (home section)
+  //       behavior: 'smooth', // Use smooth scrolling
+  //     });
+  //   } else {
+  //     setActiveLink(linkName);
+  //     handleScrollToSection(ref);
+  //   }
+  // };
 
   return (
     <div className="grid-container">
@@ -58,7 +97,7 @@ const Home = () => {
           <ul>
             <li>
               <Link
-                to="/"
+                to="#"
                 className={activeLink === 'home' ? 'active-link' : ''}
                 onClick={() => handleNavLinkClick('home', homeRef)}
               >
@@ -105,7 +144,11 @@ const Home = () => {
         </nav>
         <div className="contact-now-container">
           {/* Container for "Contact Now" */}
-          <Link to="/contact" className="contact-now-btn">
+          <Link
+            to="/"
+            className="contact-now-btn"
+            onClick={() => handleNavLinkClick('contact', contactRef)}
+          >
             CONTACT NOW
           </Link>
         </div>
@@ -123,7 +166,11 @@ const Home = () => {
               </h1>
               <div className="Lets-Start-btn-container">
                 <p>Based in Los Angeles, California.</p>
-                <Link className="Lets-Start-btn" ref={contactRef}>
+                <Link
+                  to="/"
+                  className="Lets-Start-btn"
+                  onClick={() => handleNavLinkClick('contact', contactRef)}
+                >
                   LET'S START
                 </Link>
               </div>
@@ -144,6 +191,7 @@ const Home = () => {
           <h1>PROMPT</h1>
           <h1>e Learn.</h1>
         </footer>
+
         <div className="service-container" ref={servicesRef}>
           <Services />
         </div>

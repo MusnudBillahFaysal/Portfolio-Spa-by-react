@@ -1,5 +1,52 @@
-import React from 'react';
+import React, { useState } from 'react';
+
 function Contact() {
+  const [formValues, setFormValues] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: '',
+  });
+
+  const API_BASE_URL = 'http://dev.mydomain.com:3001'; // Replace port as needed
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch(`${API_BASE_URL}/send-email`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formValues),
+      });
+
+      if (response.ok) {
+        console.log('Email sent successfully');
+        // Reset the form after successful submission
+        setFormValues({
+          name: '',
+          email: '',
+          subject: '',
+          message: '',
+        });
+      } else {
+        console.log('Error sending email');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormValues({
+      ...formValues,
+      [name]: value,
+    });
+  };
+
   return (
     <>
       <div className="contact-page">
@@ -53,9 +100,9 @@ function Contact() {
             </div>
             <div className="send-message button">
               <button
-                className="send-message button::before"
-                type="button"
-                value="Send"
+                className="send-message button"
+                type="button" // Change "type" attribute to "button"
+                onClick={handleSubmit} // Call the handleSubmit function on click
               >
                 Send Message
               </button>

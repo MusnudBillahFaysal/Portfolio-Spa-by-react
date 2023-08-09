@@ -4,6 +4,7 @@
 html {
   font-size: 62.5%;
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 body,
 #root {
@@ -87,17 +88,6 @@ header nav ul li a:hover {
   background-color: #aa3030;
 }
 main {
-  /* grid-area: main; Remove this line */
-  /* display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-
-  min-height: calc(
-    100vh - 8rem - 5rem
-  ); /* Subtract the header and footer heights from the viewport height 
-  padding-top: 8rem; Add padding-top to create space between the header and main content 
-  padding-bottom: 8rem; Add padding-bottom to create space between the main content and footer */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -108,20 +98,6 @@ main {
 }
 
 footer {
-  /* grid-area: footer; */
-  /* background-color: #13283d;
-  color: #ffffff;
-  display: flex;
-  justify-content: center; /* Add this line to create space between footer items 
-  align-items: center;
-  padding: 1rem 1.2rem; /* Add some padding to the footer 
-  position: fixed;  Set the footer to fixed position 
-  bottom: 0;  Attach it to the bottom of the viewport 
-  left: 0;
-  right: 0;
-  width: 100%; /* Make the footer fill the entire viewport width 
-  z-index: 100; Add a higher z-index to make sure the footer is on top of other elements */
-
   background-color: #13283d;
   color: #ffffff;
   display: flex;
@@ -485,10 +461,76 @@ footer h1 {
 }
 
 /* contact page*/
+/* Default styles */
+
+/* ... (your existing CSS) ... */
+
+/* Media query for tablets and smaller screens */
+@media screen and (max-width: 768px) {
+  .contact-page {
+    flex-direction: column;
+    align-items: center;
+    padding: 6rem 2rem; /* Adjust padding for smaller screens */
+  }
+
+  .content-box-contact {
+    max-width: 100%; /* Full width on smaller screens */
+    margin: 2rem 0;
+  }
+
+  .contact-form {
+    width: 100%;
+  }
+
+  .image-contact {
+    padding: 2rem;
+    text-align: center;
+    justify-self: center;
+    align-self: center;
+  }
+}
+
+/* Media query for mobile phones */
+@media screen and (max-width: 480px) {
+  .get-in-touch {
+    font-size: 2.5rem; /* Adjust font size for smaller screens */
+    margin-right: 0; /* Remove the right margin */
+    text-align: center;
+  }
+
+  .form-group-row {
+    flex-direction: column; /* Stack the form groups vertically */
+  }
+
+  .contact-infos {
+    flex-direction: column; /* Stack contact info items vertically */
+  }
+
+  .image-contact {
+    padding: 2rem;
+    text-align: center;
+    justify-self: center;
+    align-self: center;
+  }
+
+  .section-heading {
+    margin-right: 0; /* Remove the right margin */
+  }
+
+  .skill-box {
+    width: 100%; /* Make skill boxes full width on smaller screens */
+  }
+
+  .image img {
+    max-height: 400px; /* Adjust max height for smaller screens */
+  }
+}
+
+/* ... (other media queries for different screen sizes) ... */
 
 .contact-page {
   background-color: black;
-  padding: 99px 73px;
+  padding: 119px 83px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -551,12 +593,14 @@ footer h1 {
 }
 .form-group-1 input {
   width: 90%;
+  padding: 2rem 2rem solid;
   /* Other styles for the input field ... */
 }
 
 /* Styles for the "Message" textarea */
 .form-group-2 textarea {
   width: 90%;
+  padding: 2rem 2rem solid;
   /* Other styles for the textarea ... */
 }
 .contact-infos {
@@ -737,3 +781,84 @@ p {
     flex-direction: column;
   }
 }
+
+/* Default styles for larger screens */
+/* ... (your existing CSS) ... */
+
+/* Media query for tablets and smaller screens */
+@media screen and (max-width: 768px) {
+  .grid-container {
+    grid-template-areas:
+      'header'
+      'main'
+      'footer';
+  }
+  .header nav ul {
+    flex-direction: column;
+    text-align: center;
+  }
+  .header nav ul li {
+    margin-left: 0;
+    margin-bottom: 1rem;
+  }
+  .button.primary {
+    margin-left: 3rem;
+  }
+  /* Adjust other styles as needed */
+}
+
+/* Media query for mobile phones */
+@media screen and (max-width: 480px) {
+  .header {
+    padding: 1rem;
+  }
+  .header a {
+    font-size: 4rem;
+  }
+  .button.primary {
+    margin-left: 2rem;
+  }
+  /* Adjust other styles as needed */
+}
+
+/* Media query for smaller screens */
+@media screen and (max-width: 320px) {
+  .header a {
+    font-size: 3.5rem;
+  }
+  .button.primary {
+    margin-left: 1.5rem;
+  }
+  /* Adjust other styles as needed */
+}
+
+/* Media query for larger screens */
+@media screen and (min-width: 1200px) {
+  .grid-container {
+    grid-template-areas:
+      'header header header'
+      'main main sidebar'
+      'footer footer footer';
+    grid-template-columns: 2fr 3fr 1fr; /* Example column distribution */
+  }
+  .main {
+    flex: 2 80rem;
+  }
+  .sidebar {
+    flex: 1 30rem;
+  }
+  /* Adjust other styles as needed */
+}
+
+/* Media query for very small screens */
+@media screen and (max-width: 280px) {
+  .header a {
+    font-size: 3rem;
+  }
+  .button.primary {
+    margin-left: 1rem;
+  }
+  /* Adjust other styles as needed */
+}
+
+/* ... (other media queries for different screen sizes) ... */

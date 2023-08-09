@@ -18,11 +18,11 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />} />
-
         <Route path="/" element={<Home />} />
         <Route path="/" element={<Services />} />
         <Route path="/" element={<Skills />} />
-
+        <Route path="/send-email" element={<Contact />} />{' '}
+        {/* Change this line */}
         <Route path="/" element={<Portfolio />} />
         <Route path="/" element={<Contact />} />
       </Routes>
